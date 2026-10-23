@@ -1,0 +1,443 @@
+<title>Siddharth & Somya</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Tiro+Devanagari+Hindi&family=Karla:wght@400;500;600&display=swap">
+<style>
+  /* Layout: a tall wedding card. Deep maroon front with a hand-drawn rangoli behind the names,
+     a marigold toran band beneath it, then haldi-ivory paper for the practical sections.
+     Single committed look, chosen for the subject. */
+  :root {
+    --paper: #fbf4e6;
+    --paper-deep: #f4e8d0;
+    --ink: #3a1a14;
+    --ink-soft: #6d4a3f;
+    --maroon: #6e1226;
+    --maroon-deep: #4c0b1a;
+    --marigold: #e39a1f;
+    --marigold-soft: #f6c75c;
+    --haldi: #f9d77a;
+    --rule: #e2cfa6;
+    --on-maroon: #fbf1dc;
+    --on-maroon-soft: #e6c9b4;
+    --font-display: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+    --font-script: "Great Vibes", "Brush Script MT", cursive;
+    --font-devanagari: "Tiro Devanagari Hindi", "Noto Sans Devanagari", serif;
+    --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto;
+    height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--maroon-deep);
+  }
+  a { color: inherit; }
+  .wrap {
+    max-width: 44rem; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  /* Front page */
+  .hero {
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, #8a1a33 0%, var(--maroon) 45%, var(--maroon-deep) 100%);
+    color: var(--on-maroon);
+  }
+  .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+  .frame {
+    position: absolute; inset: 14px; pointer-events: none;
+    border: 1px solid rgba(246, 199, 92, .45);
+    outline: 1px solid rgba(246, 199, 92, .18); outline-offset: 4px;
+  }
+  .corner { position: absolute; width: 92px; height: 92px; pointer-events: none; opacity: .9; }
+  .corner.tl { top: 18px; left: 18px; }
+  .corner.tr { top: 18px; right: 18px; transform: scaleX(-1); }
+  .corner.bl { bottom: 18px; left: 18px; transform: scaleY(-1); }
+  .corner.br { bottom: 18px; right: 18px; transform: scale(-1); }
+  @media (max-width: 560px) { .corner { width: 60px; height: 60px; } .frame { inset: 10px; } }
+  .divider { display: flex; justify-content: center; align-items: center; gap: .9rem; color: var(--marigold); }
+  .divider::before, .divider::after { content: ""; height: 1px; width: 5rem; background: linear-gradient(to right, transparent, var(--marigold)); }
+  .divider::after { background: linear-gradient(to left, transparent, var(--marigold)); }
+  .divider svg { width: 30px; height: 30px; }
+  .hero .wrap { position: relative; padding-block: 3rem 3.25rem; text-align: center; display: grid; gap: .9rem; justify-items: center; }
+  .ganesh { font-family: var(--font-devanagari); font-size: 1.2rem; color: var(--marigold-soft); letter-spacing: .08em; }
+  .welcome {
+    font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 3.4vw, 1.4rem);
+    max-width: 34ch; line-height: 1.4; color: var(--on-maroon-soft); text-wrap: balance;
+  }
+  .ornament { width: 9rem; height: 1px; background: var(--marigold); position: relative; margin-block: .5rem; }
+  .ornament::after, .ornament::before {
+    content: ""; position: absolute; top: 50%; width: 7px; height: 7px;
+    transform: translate(-50%, -50%) rotate(45deg); background: var(--marigold);
+  }
+  .ornament::after { left: 50%; outline: 4px solid var(--maroon); }
+  .ornament::before { left: 50%; width: 15px; height: 15px; background: none; border: 1px solid var(--marigold); }
+  .person { display: grid; gap: .25rem; justify-items: center; }
+  .person .name {
+    font-family: var(--font-display); font-weight: 500; line-height: 1.05; margin: 0;
+    font-size: clamp(2.5rem, 9vw, 4.2rem); color: var(--on-maroon); text-wrap: balance;
+  }
+  .person .lineage {
+    font-family: var(--font-display); font-size: clamp(.95rem, 2.6vw, 1.1rem); line-height: 1.45;
+    color: var(--on-maroon-soft); max-width: 100%;
+  }
+  .person .lineage strong { color: var(--on-maroon); font-weight: 600; }
+  .weds { font-family: var(--font-script); font-size: clamp(2.6rem, 8vw, 3.6rem); color: var(--marigold-soft); line-height: 1; margin-block: .2rem; }
+  .date-line { display: grid; gap: .25rem; margin-top: .6rem; }
+  .date-line .big { font-family: var(--font-display); font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 500; color: var(--haldi); }
+  .date-line .small { color: var(--on-maroon-soft); font-size: .95rem; }
+  .countdown { display: flex; gap: 1.5rem; margin-top: .4rem; font-variant-numeric: tabular-nums; }
+  .countdown div { display: grid; justify-items: center; }
+  .countdown b { font-family: var(--font-display); font-size: 1.9rem; font-weight: 500; line-height: 1; }
+  .countdown span { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--on-maroon-soft); margin-top: .3rem; }
+
+  /* Toran band */
+  .toran { background: var(--maroon-deep); line-height: 0; }
+  .toran svg { width: 100%; height: 34px; display: block; }
+
+  /* Body sections */
+  section .wrap { padding-block: 2.75rem; }
+  section + section .wrap { border-top: 1px solid var(--rule); }
+  section .wrap > .divider { margin: -1.1rem 0 1.5rem; }
+
+  .sides { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .side { background: var(--paper-deep); border: 1px solid var(--rule); padding: 1.4rem 1.4rem 1rem; min-width: 0; position: relative; }
+  .side::before { content: ""; position: absolute; inset: 6px; border: 1px solid var(--rule); pointer-events: none; }
+  .side h3 { margin: 0 0 .9rem; font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--maroon); text-align: center; }
+  .side h3 small { display: block; font-family: var(--font-body); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--marigold); margin-bottom: .2rem; }
+  .side .schedule li { grid-template-columns: 1fr auto; align-items: baseline; padding-block: .8rem; }
+  .side .schedule time { text-align: right; white-space: nowrap; }
+  .side .schedule time { font-size: 1.25rem; }
+  .side .schedule h4 { margin: 0; font-size: 1rem; font-weight: 600; }
+  .side .schedule time.sub { font-style: italic; font-size: 1.05rem; white-space: normal; max-width: 9rem; line-height: 1.3; }
+  .side .note { margin-top: .9rem; font-size: .85rem; color: var(--ink-soft); text-align: center; font-style: italic; }
+  @media (max-width: 640px) { .sides { grid-template-columns: 1fr; } }
+  h2 {
+    font-family: var(--font-display); font-weight: 500; font-size: 2rem; line-height: 1.1;
+    margin: 0 0 .4rem; color: var(--maroon); text-wrap: balance;
+  }
+  .lede { color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 60ch; }
+  p { margin: 0; max-width: 65ch; }
+
+  .venue-card {
+    display: grid; gap: 1.25rem; grid-template-columns: 1fr auto; align-items: end;
+    background: var(--paper-deep); border: 1px solid var(--rule); padding: 1.5rem;
+  }
+  .venue-card address { font-style: normal; font-family: var(--font-display); font-size: 1.35rem; line-height: 1.3; min-width: 0; color: var(--maroon); }
+  .btn {
+    display: inline-block; text-decoration: none; background: var(--marigold); color: var(--maroon-deep);
+    font-weight: 600; font-size: .9rem; letter-spacing: .04em; padding: .8rem 1.25rem; white-space: nowrap;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--marigold-soft); outline: 2px solid var(--maroon); outline-offset: 2px; }
+  .gate-note {
+    margin-top: 1.25rem; padding: 1rem 1.25rem; border-left: 3px solid var(--marigold);
+    background: #fff8e6; color: var(--ink); max-width: none;
+  }
+  .gate-note strong { color: var(--maroon); }
+  .map { margin-top: 1.5rem; border: 1px solid var(--rule); background: #fdf9f0; overflow: hidden; }
+  .map svg { width: 100%; height: auto; display: block; }
+  .map figcaption { font-size: .85rem; color: var(--ink-soft); padding: .7rem 1rem; border-top: 1px solid var(--rule); }
+
+  .schedule { list-style: none; margin: 0; padding: 0; display: grid; }
+  .schedule li { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--rule); }
+  .schedule li:last-child { border-bottom: 0; }
+  .schedule time { font-family: var(--font-display); font-size: 1.5rem; color: var(--maroon); font-variant-numeric: tabular-nums; }
+  .schedule h3 { margin: 0; font-size: 1.05rem; font-weight: 600; }
+  .schedule p { color: var(--ink-soft); font-size: .95rem; }
+
+  .routes { display: grid; gap: 1.1rem; margin: 0; padding: 0; list-style: none; }
+  .routes li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; min-width: 0; }
+  .routes .mode { font-size: .75rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--marigold); padding-top: .3rem; }
+  .routes h3 { margin: 0 0 .15rem; font-size: 1.05rem; font-weight: 600; }
+  .routes p { color: var(--ink-soft); font-size: .95rem; }
+  .conveyance { margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--paper-deep); border: 1px solid var(--rule); max-width: none; }
+
+  .notes { margin: 0; padding: 0; list-style: none; display: grid; gap: 1rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 2rem 1fr; gap: .9rem; align-items: start; min-width: 0; }
+  .notes li::before {
+    counter-increment: n; content: counter(n, decimal-leading-zero);
+    font-family: var(--font-display); font-size: 1.3rem; color: var(--marigold); line-height: 1.3; font-variant-numeric: tabular-nums;
+  }
+  .notes h3 { margin: 0 0 .1rem; font-size: 1.05rem; font-weight: 600; }
+  .notes p { color: var(--ink-soft); font-size: .95rem; }
+
+  .contact { background: var(--paper-deep); border: 1px solid var(--rule); padding: 1.5rem; display: grid; gap: 1rem; }
+  .contact .who { font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--marigold); }
+  .contact .num { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: .02em; color: var(--maroon); user-select: all; }
+  .contact .num + .num { margin-top: .1rem; }
+
+  footer { background: var(--maroon-deep); color: var(--on-maroon); }
+  footer .wrap { padding-block: 3rem 3.5rem; text-align: center; display: grid; gap: .8rem; justify-items: center; }
+  footer .sign { font-family: var(--font-display); font-size: clamp(1.4rem, 4.5vw, 1.9rem); font-style: italic; max-width: 32ch; line-height: 1.35; text-wrap: balance; }
+  footer .names { font-family: var(--font-script); font-size: 2.4rem; color: var(--marigold-soft); line-height: 1.1; }
+  footer .fam { color: var(--on-maroon-soft); font-size: .9rem; }
+
+  @media (max-width: 560px) {
+    .venue-card { grid-template-columns: 1fr; align-items: start; }
+    .schedule li { grid-template-columns: 1fr; gap: .2rem; }
+    .routes li { grid-template-columns: 1fr; gap: .2rem; }
+    .countdown { gap: 1.1rem; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero .wrap > * { animation: rise .8s ease both; }
+    .hero .wrap > *:nth-child(2) { animation-delay: .1s; }
+    .hero .wrap > *:nth-child(3) { animation-delay: .2s; }
+    .hero .wrap > *:nth-child(4) { animation-delay: .3s; }
+    .hero .wrap > *:nth-child(5) { animation-delay: .4s; }
+    .hero .wrap > *:nth-child(6) { animation-delay: .5s; }
+    .hero .wrap > *:nth-child(7) { animation-delay: .6s; }
+    .hero .wrap > *:nth-child(8) { animation-delay: .7s; }
+    @keyframes rise { from { opacity: .001; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+
+<header class="hero">
+  <canvas id="rangoli" aria-hidden="true"></canvas>
+  <div class="frame" aria-hidden="true"></div>
+  <svg class="corner tl" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#f6c75c" stroke-width="1.6" stroke-linecap="round"><path d="M4 60 C4 24 24 4 60 4"/><path d="M10 40 C14 22 22 14 40 10"/><path d="M4 60 c0 -10 6 -14 12 -12 6 2 6 10 0 12 -4 1 -8 0 -12 0z"/><path d="M60 4 c-10 0 -14 6 -12 12 2 6 10 6 12 0 1 -4 0 -8 0 -12z"/><path d="M40 10 c-6 8 -8 16 -4 22 4 -6 12 -8 22 -4"/><path d="M18 30 c8 2 12 8 12 14"/><path d="M30 18 c2 8 8 12 14 12"/></g><g fill="#f6c75c"><circle cx="24" cy="24" r="2.2"/><circle cx="14" cy="50" r="1.6"/><circle cx="50" cy="14" r="1.6"/><circle cx="36" cy="36" r="1.4"/></g></svg>
+  <svg class="corner tr" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#f6c75c" stroke-width="1.6" stroke-linecap="round"><path d="M4 60 C4 24 24 4 60 4"/><path d="M10 40 C14 22 22 14 40 10"/><path d="M4 60 c0 -10 6 -14 12 -12 6 2 6 10 0 12 -4 1 -8 0 -12 0z"/><path d="M60 4 c-10 0 -14 6 -12 12 2 6 10 6 12 0 1 -4 0 -8 0 -12z"/><path d="M40 10 c-6 8 -8 16 -4 22 4 -6 12 -8 22 -4"/><path d="M18 30 c8 2 12 8 12 14"/><path d="M30 18 c2 8 8 12 14 12"/></g><g fill="#f6c75c"><circle cx="24" cy="24" r="2.2"/><circle cx="14" cy="50" r="1.6"/><circle cx="50" cy="14" r="1.6"/><circle cx="36" cy="36" r="1.4"/></g></svg>
+  <svg class="corner bl" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#f6c75c" stroke-width="1.6" stroke-linecap="round"><path d="M4 60 C4 24 24 4 60 4"/><path d="M10 40 C14 22 22 14 40 10"/><path d="M4 60 c0 -10 6 -14 12 -12 6 2 6 10 0 12 -4 1 -8 0 -12 0z"/><path d="M60 4 c-10 0 -14 6 -12 12 2 6 10 6 12 0 1 -4 0 -8 0 -12z"/><path d="M40 10 c-6 8 -8 16 -4 22 4 -6 12 -8 22 -4"/><path d="M18 30 c8 2 12 8 12 14"/><path d="M30 18 c2 8 8 12 14 12"/></g><g fill="#f6c75c"><circle cx="24" cy="24" r="2.2"/><circle cx="14" cy="50" r="1.6"/><circle cx="50" cy="14" r="1.6"/><circle cx="36" cy="36" r="1.4"/></g></svg>
+  <svg class="corner br" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#f6c75c" stroke-width="1.6" stroke-linecap="round"><path d="M4 60 C4 24 24 4 60 4"/><path d="M10 40 C14 22 22 14 40 10"/><path d="M4 60 c0 -10 6 -14 12 -12 6 2 6 10 0 12 -4 1 -8 0 -12 0z"/><path d="M60 4 c-10 0 -14 6 -12 12 2 6 10 6 12 0 1 -4 0 -8 0 -12z"/><path d="M40 10 c-6 8 -8 16 -4 22 4 -6 12 -8 22 -4"/><path d="M18 30 c8 2 12 8 12 14"/><path d="M30 18 c2 8 8 12 14 12"/></g><g fill="#f6c75c"><circle cx="24" cy="24" r="2.2"/><circle cx="14" cy="50" r="1.6"/><circle cx="50" cy="14" r="1.6"/><circle cx="36" cy="36" r="1.4"/></g></svg>
+  <div class="wrap">
+    <div class="ganesh">॥ श्री गणेशाय नमः ॥</div>
+    <p class="welcome">With God's grace and our elders' blessings, we graciously and warmly welcome you to the wedding ceremony of</p>
+    <div class="ornament" aria-hidden="true"></div>
+    <div class="person">
+      <h1 class="name">Siddharth Tomar</h1>
+      <p class="lineage">
+        Grandson of <strong>Late Smt. Sheetlo Devi</strong> and <strong>Shri Sahib Singh</strong><br>
+        Son of <strong>Smt. Santosh Tomar</strong> and <strong>Shri Devendra Tomar</strong>
+      </p>
+    </div>
+    <div class="weds">weds</div>
+    <div class="person">
+      <h1 class="name">Somya Dhama</h1>
+      <p class="lineage">
+        Granddaughter of <strong>Smt. Sushila Dhama</strong> and <strong>Late Shri Munshi Dhama</strong><br>
+        Daughter of <strong>Smt. Anjali Dhama</strong> and <strong>Shri Sanjiv Kumar Dhama</strong>
+      </p>
+    </div>
+    <div class="date-line">
+      <div class="big">Sunday, 06 December 2026</div>
+      <div class="small">Rockview Officers' Enclave · Air Force Station Palam · Delhi Cantt</div>
+    </div>
+    <div class="countdown" id="countdown" aria-label="Time until the wedding">
+      <div><b id="cd-days">—</b><span>Days</span></div>
+      <div><b id="cd-hours">—</b><span>Hours</span></div>
+      <div><b id="cd-mins">—</b><span>Minutes</span></div>
+    </div>
+  </div>
+</header>
+<div class="toran" aria-hidden="true">
+  <svg viewBox="0 0 1200 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="scallop" width="60" height="34" patternUnits="userSpaceOnUse">
+        <path d="M0 0 H60 V8 A30 30 0 0 1 0 8 Z" fill="#e39a1f"/>
+        <path d="M6 6 A24 24 0 0 0 54 6" fill="none" stroke="#f6c75c" stroke-width="2"/>
+        <circle cx="30" cy="30" r="3.5" fill="#f6c75c"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="34" fill="url(#scallop)"/>
+  </svg>
+</div>
+
+<section id="venue">
+  <div class="wrap">
+    <h2>The venue</h2>
+    <p class="lede">The celebrations are held inside an Indian Air Force station. Please read the gate note and the instructions further down before you set out.</p>
+    <div class="venue-card">
+      <address>
+        Rockview Officers' Enclave<br>
+        Air Force Station Palam<br>
+        Delhi Cantt, New Delhi 110010
+      </address>
+      <a class="btn" href="https://maps.app.goo.gl/c3K7QCSvYzReAHHi6" target="_blank" rel="noopener">Open location in Google Maps</a>
+    </div>
+    <p class="gate-note">
+      <strong>Please note the entrance.</strong> Entry to the venue is through the gate about <strong>500 m ahead of the main entrance gate</strong> of Air Force Station Palam. It is not the main gate itself; please do not stop there. Follow the pinned location above and it will bring you to the right gate.
+    </p>
+    <figure class="map">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sketch showing the venue gate 500 metres beyond the main gate of Air Force Station Palam">
+        <rect width="720" height="300" fill="#fdf9f0"/>
+        <!-- station boundary -->
+        <rect x="40" y="30" width="640" height="120" rx="6" fill="#f1e5cc" stroke="#e2cfa6" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="60" y="58" font-family="Karla, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="2" fill="#6d4a3f">AIR FORCE STATION PALAM</text>
+        <!-- road -->
+        <rect x="0" y="178" width="720" height="44" fill="#d9c9a6"/>
+        <line x1="0" y1="200" x2="720" y2="200" stroke="#fdf9f0" stroke-width="2" stroke-dasharray="14 12"/>
+        <!-- main gate -->
+        <rect x="186" y="150" width="34" height="30" fill="#b89b6b" stroke="#6d4a3f" stroke-width="1.5"/>
+        <line x1="203" y1="150" x2="203" y2="180" stroke="#6d4a3f" stroke-width="1.5"/>
+        <circle cx="203" cy="200" r="7" fill="none" stroke="#6d4a3f" stroke-width="2"/>
+        <line cx="203" x1="203" y1="207" x2="203" y2="236" stroke="#6d4a3f" stroke-width="2"/>
+        <text x="203" y="256" text-anchor="middle" font-family="Karla, Arial, sans-serif" font-size="13" font-weight="600" fill="#6d4a3f">Main entrance gate</text>
+        <text x="203" y="274" text-anchor="middle" font-family="Karla, Arial, sans-serif" font-size="12" fill="#6d4a3f">not this one</text>
+        <!-- 500 m arrow -->
+        <line x1="222" y1="168" x2="478" y2="168" stroke="#e39a1f" stroke-width="2"/>
+        <polygon points="486,168 474,162 474,174" fill="#e39a1f"/>
+        <text x="352" y="162" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="18" font-style="italic" fill="#6e1226">about 500 m ahead</text>
+        <!-- venue gate -->
+        <rect x="486" y="150" width="34" height="30" fill="#e39a1f" stroke="#6e1226" stroke-width="1.5"/>
+        <line x1="503" y1="150" x2="503" y2="180" stroke="#6e1226" stroke-width="1.5"/>
+        <path d="M503 190 c-14 0 -24 11 -24 24 0 16 24 36 24 36 s24 -20 24 -36 c0 -13 -10 -24 -24 -24z" fill="#6e1226"/>
+        <circle cx="503" cy="214" r="8" fill="#fdf9f0"/>
+        <text x="503" y="268" text-anchor="middle" font-family="Karla, Arial, sans-serif" font-size="13" font-weight="600" fill="#6e1226">Venue gate · Rockview Officers' Enclave</text>
+        <text x="503" y="286" text-anchor="middle" font-family="Karla, Arial, sans-serif" font-size="12" fill="#6d4a3f">follow the pinned location</text>
+        <!-- venue block inside -->
+        <rect x="460" y="86" width="140" height="50" rx="4" fill="#fbf1dc" stroke="#6e1226" stroke-width="1.5"/>
+        <text x="530" y="107" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="16" font-weight="600" fill="#6e1226">Rockview</text>
+        <text x="530" y="125" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="14" fill="#6e1226">Officers' Enclave</text>
+        <line x1="530" y1="136" x2="508" y2="150" stroke="#6e1226" stroke-width="1" stroke-dasharray="3 3"/>
+      </svg>
+      <figcaption>Sketch, not to scale. The pinned location in Google Maps is the one to follow.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="schedule">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 c-5 6 -8 12 -8 18 0 6 4 10 8 10 4 0 8 -4 8 -10 0 -6 -3 -12 -8 -18z"/><path d="M20 10 c-3 5 -4 9 -4 14 0 4 2 7 4 7 2 0 4 -3 4 -7 0 -5 -1 -9 -4 -14z"/><path d="M8 26 c4 2 8 2 12 0 4 2 8 2 12 0"/><path d="M6 30 c5 3 9 3 14 0 5 3 9 3 14 0"/></svg></div>
+    <h2>Sequence of events</h2>
+    <p class="lede">Sunday, 06 December 2026.</p>
+    <div class="sides">
+      <div class="side">
+        <h3><small>Bride's side</small>At Rockview Officers' Enclave</h3>
+        <ol class="schedule">
+          <li><div><h4>Baraat arrival &amp; welcome</h4></div><time datetime="18:00">6:00 pm</time></li>
+          <li><div><h4>Pritibhoj</h4></div><time datetime="19:00">7:00 pm</time></li>
+          <li><div><h4>Pheras</h4></div><time datetime="23:00">11:00 pm</time></li>
+          <li><div><h4>Vidaai</h4></div><time class="sub">Taaron ki chhaanv mein</time></li>
+        </ol>
+      </div>
+      <div class="side">
+        <h3><small>Groom's side</small>Before the Baraat sets off</h3>
+        <ol class="schedule">
+          <li><div><h4>Ghurchari</h4></div><time datetime="16:00">4:00 pm</time></li>
+          <li><div><h4>Departure of Baraat</h4></div><time datetime="17:00">5:00 pm</time></li>
+        </ol>
+        <p class="note">The baraat then arrives at the venue at 6:00 pm and joins the celebrations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reach">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 c-5 6 -8 12 -8 18 0 6 4 10 8 10 4 0 8 -4 8 -10 0 -6 -3 -12 -8 -18z"/><path d="M20 10 c-3 5 -4 9 -4 14 0 4 2 7 4 7 2 0 4 -3 4 -7 0 -5 -1 -9 -4 -14z"/><path d="M8 26 c4 2 8 2 12 0 4 2 8 2 12 0"/><path d="M6 30 c5 3 9 3 14 0 5 3 9 3 14 0"/></svg></div>
+    <h2>How to reach</h2>
+    <p class="lede">Air Force Station Palam sits in Delhi Cantonment, in south-west Delhi, between the airport and Dhaula Kuan.</p>
+    <ul class="routes">
+      <li><span class="mode">By air</span><div><h3>Indira Gandhi International Airport (DEL)</h3><p>The station adjoins the airport; the drive from either terminal is roughly 15 to 25 minutes depending on traffic. Prepaid taxis and app cabs are available at both terminals.</p></div></li>
+      <li><span class="mode">By train</span><div><h3>Delhi Cantt railway station</h3><p>The closest railhead, a short drive from the venue. New Delhi railway station is about 45 to 60 minutes away by road; Hazrat Nizamuddin about the same.</p></div></li>
+      <li><span class="mode">By metro</span><div><h3>Delhi Cantt (Pink Line) or Palam (Magenta Line)</h3><p>Take an auto or cab from the station to the venue. Share the pinned location with the driver so you are dropped at the correct gate.</p></div></li>
+      <li><span class="mode">By road</span><div><h3>Driving in</h3><p>Approach via Dhaula Kuan or the NH-48 airport stretch, then follow the pinned location to the venue gate. Valet service is available at the venue.</p></div></li>
+    </ul>
+    <p class="conveyance">If you need any conveyance, please let us know on the numbers given below and we will gladly arrange a suitable mode of transport for you.</p>
+  </div>
+</section>
+
+<section id="instructions">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 c-5 6 -8 12 -8 18 0 6 4 10 8 10 4 0 8 -4 8 -10 0 -6 -3 -12 -8 -18z"/><path d="M20 10 c-3 5 -4 9 -4 14 0 4 2 7 4 7 2 0 4 -3 4 -7 0 -5 -1 -9 -4 -14z"/><path d="M8 26 c4 2 8 2 12 0 4 2 8 2 12 0"/><path d="M6 30 c5 3 9 3 14 0 5 3 9 3 14 0"/></svg></div>
+    <h2>Before you come</h2>
+    <p class="lede">A few things that make entry into the station smooth for everyone.</p>
+    <ol class="notes">
+      <li><div><h3>Carry a government photo ID</h3><p>Aadhaar, driving licence, passport or voter ID. Every adult guest is checked at the gate; please keep the original handy, not a photocopy or a photo on your phone.</p></div></li>
+      <li><div><h3>Valet service</h3><p>Valet parking will be available at the venue, so drive right up to the gate and hand over your keys.</p></div></li>
+      <li><div><h3>Keep the traffic in mind</h3><p>Evening traffic around Dhaula Kuan and the airport stretch can be slow, so prior arrival is advised. Leave a little earlier than you think you need to.</p></div></li>
+      <li><div><h3>Photography</h3><p>Photos and videos are welcome at the celebration. Please do not photograph the gate, the airfield or any station area on the way in.</p></div></li>
+      <li><div><h3>Dress code</h3><p>It's a night to celebrate! Dress to look the happiest.</p></div></li>
+      <li><div><h3>Staying over</h3><p>Anyone wishing to stay the night is requested to share their requirements in advance, so that adequate arrangements can be made.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 c-5 6 -8 12 -8 18 0 6 4 10 8 10 4 0 8 -4 8 -10 0 -6 -3 -12 -8 -18z"/><path d="M20 10 c-3 5 -4 9 -4 14 0 4 2 7 4 7 2 0 4 -3 4 -7 0 -5 -1 -9 -4 -14z"/><path d="M8 26 c4 2 8 2 12 0 4 2 8 2 12 0"/><path d="M6 30 c5 3 9 3 14 0 5 3 9 3 14 0"/></svg></div>
+    <h2>Need help on the day?</h2>
+    <p class="lede">Call or message these numbers for directions, conveyance, stay arrangements or anything else.</p>
+    <div class="contact">
+      <div><div class="who">Groom's side</div><div class="num">92502 72254</div><div class="num">76786 27975</div></div>
+      <div><div class="who">Bride's side</div><div class="num">98998 05523</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="sign">Your presence will add to the grace of this auspicious occasion. We would be honoured to have you with us as we begin this new journey, and to share in your blessings and your joy.</div>
+    <div class="names">Siddharth &amp; Somya</div>
+    <div class="fam">with the Tomar and Dhama families</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var target = new Date("2026-12-06T18:00:00+05:30").getTime();
+    var d = document.getElementById("cd-days"), h = document.getElementById("cd-hours"), m = document.getElementById("cd-mins");
+    function tick() {
+      var diff = Math.max(0, target - Date.now());
+      d.textContent = Math.floor(diff / 864e5);
+      h.textContent = Math.floor(diff % 864e5 / 36e5);
+      m.textContent = Math.floor(diff % 36e5 / 6e4);
+    }
+    tick(); setInterval(tick, 30000);
+  })();
+
+  // Rangoli watermark behind the front page: concentric petal rings drawn on canvas.
+  (function () {
+    var c = document.getElementById("rangoli"), hero = c.parentNode;
+    var ctx = c.getContext("2d");
+    function draw() {
+      var w = hero.clientWidth, hh = hero.clientHeight, dpr = Math.min(window.devicePixelRatio || 1, 2);
+      c.width = w * dpr; c.height = hh * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, w, hh);
+      var cx = w / 2, cy = hh / 2, R = Math.max(w, hh) * 0.62;
+      ctx.lineWidth = 1;
+      function petals(r, n, len, wid, color, alpha) {
+        ctx.save(); ctx.translate(cx, cy); ctx.strokeStyle = color; ctx.globalAlpha = alpha;
+        for (var i = 0; i < n; i++) {
+          ctx.rotate(Math.PI * 2 / n);
+          ctx.beginPath();
+          ctx.moveTo(r, 0);
+          ctx.quadraticCurveTo(r + len / 2, -wid, r + len, 0);
+          ctx.quadraticCurveTo(r + len / 2, wid, r, 0);
+          ctx.stroke();
+        }
+        ctx.restore();
+      }
+      function ring(r, color, alpha, dash) {
+        ctx.save(); ctx.strokeStyle = color; ctx.globalAlpha = alpha; ctx.setLineDash(dash || []);
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke(); ctx.restore();
+      }
+      var gold = "#f6c75c", rose = "#f2a9a0";
+      ring(R * .18, gold, .22);
+      petals(R * .18, 12, R * .10, R * .03, gold, .20);
+      ring(R * .30, rose, .14, [2, 8]);
+      petals(R * .30, 18, R * .12, R * .035, gold, .16);
+      ring(R * .44, gold, .14);
+      petals(R * .44, 24, R * .14, R * .04, rose, .12);
+      ring(R * .60, gold, .10, [1, 10]);
+      petals(R * .60, 32, R * .16, R * .045, gold, .10);
+      ring(R * .78, rose, .07);
+      petals(R * .78, 40, R * .18, R * .05, gold, .07);
+      // scattered dots like coloured powder
+      ctx.save(); ctx.globalAlpha = .18; ctx.fillStyle = gold;
+      for (var k = 0; k < 90; k++) {
+        var a = k * 2.399, rr = R * (.2 + (k % 9) * .075);
+        ctx.beginPath(); ctx.arc(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr, 1.6, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+    draw();
+    var t; window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(draw, 120); });
+  })();
+</script>
